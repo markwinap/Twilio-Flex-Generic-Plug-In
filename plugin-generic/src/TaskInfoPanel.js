@@ -12,6 +12,7 @@ import { Card, Icon, Button } from 'semantic-ui-react'
 const CRM_baseurl = 'https://owlcrm.herokuapp.com/';
 
 const grey_dark = "#4b5a6b";
+const snow_host = "https://dev76321.service-now.com/";
 
 const vip = (
     <a>
@@ -38,7 +39,7 @@ class CustomCRM extends React.Component {
         {task.attributes.name + " - " + task.attributes.email}
       </Card.Content>
       {
-        task.attributes.number ? <Card.Content extra><Button basic fluid color='red' href={'https://dev72990.service-now.com/nav_to.do?uri=/incident.do?sys_id=' + task.attributes.sys_id} target="_blank">{task.attributes.number}</Button></Card.Content> : <div/>
+        task.attributes.number ? <Card.Content extra><Button basic fluid color='red' href={snow_host + 'nav_to.do?uri=/incident.do?sys_id=' + task.attributes.sys_id} target="_blank">{task.attributes.number}</Button></Card.Content> : <div/>
       }
     </Card>
     }

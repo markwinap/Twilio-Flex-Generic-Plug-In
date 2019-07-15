@@ -6,9 +6,9 @@ const brandColor1 = "#E71D36";
 const brandColor2 = "#011627";
 const brandTextColor = "#ffffff";
 
-const oranege = "#f58220";
-const orange_text = "#F37721";
-const green = "#4279af";
+const oranege = "#00634e"; //f58220
+const orange_text = "#fe9341";//F37721
+const green = "#333d48";
 const buton_background = "#ED2525";
 const buton_border = "#e61313";
 const grey_text = "#4b5a6b";

@@ -9,6 +9,7 @@ import styled from "react-emotion";
 import { Button, Icon, Image, Item, Label } from 'semantic-ui-react'
 
 const grey_dark = "#4b5a6b";
+const snow_host = "https://dev76321.service-now.com/";
 
 const priority = {
   "1 - Critical": {color: "red"},
@@ -39,14 +40,14 @@ class CustomCRM extends React.Component {
     // If we have a snapshot value, we've just added new items.
     // Adjust scroll so these new items don't push the old ones out of view.
     // (snapshot here is the value returned from getSnapshotBeforeUpdate)
-    console.log("UPDAYED!!!!!!!!!!!!")
+    console.log("UPDUPDATED!!!!!!!!!!!!")
   }
   renderList() {
     const {result } = this.state;
     const listItems = result.map((ticket) =>
     <Item>
       <Item.Content>
-        <Item.Header as='a' href={'https://dev72990.service-now.com/nav_to.do?uri=/incident.do?sys_id=' + ticket.sys_id} target="_blank">{ticket.number} - {ticket.short_description}</Item.Header>
+        <Item.Header as='a' href={ snow_host + 'nav_to.do?uri=/incident.do?sys_id=' + ticket.sys_id} target="_blank">{ticket.number} - {ticket.short_description}</Item.Header>
         <Item.Meta>
           <span className='cinema' >{ticket.assignment_group.display_value} - {ticket.assigned_to.display_value}</span>
         </Item.Meta>
@@ -109,7 +110,7 @@ class CustomCRM extends React.Component {
       console.log(getUser)
       if(getUser.result.length > 0){
         try {
-          let getData = await fetch('https://dev72990.service-now.com/api/now/table/incident?sysparm_query=caller_id.sys_id=' + getUser.result[0].sys_id + '^assignment_group=d625dccec0a8016700a222a0f7900d06^stateIN1,2,3^ORDERBYnumber&sysparm_display_value=true&sysparm_limit=20&sysparm_fields=severity,assigned_to,incident_state,sys_id,assignment_group,short_description,description,subcategory,caller_id,sys_updated_on,sys_created_on,opened_at,number,state,cmdb_ci,impact,business_service,priority',
+          let getData = await fetch(snow_host + 'api/now/table/incident?sysparm_query=caller_id.sys_id=' + getUser.result[0].sys_id + '^assignment_group=d625dccec0a8016700a222a0f7900d06^stateIN1,2,3^ORDERBYnumber&sysparm_display_value=true&sysparm_limit=20&sysparm_fields=severity,assigned_to,incident_state,sys_id,assignment_group,short_description,description,subcategory,caller_id,sys_updated_on,sys_created_on,opened_at,number,state,cmdb_ci,impact,business_service,priority',
           {
             method: 'get',
             headers:
@@ -146,14 +147,14 @@ class CustomCRM extends React.Component {
     </CRMContainer></Canvas>
     } 
     else if(task.attributes.vip){
-      let tempUrl = 'https://dev72990.service-now.com/api/now/table/incident?sysparm_query=caller_id.sys_id=' + task.attributes.caller_id + '^assignment_group=d625dccec0a8016700a222a0f7900d06^stateIN1,2,3^ORDERBYnumber&sysparm_display_value=true&sysparm_limit=20&sysparm_fields=severity,assigned_to,incident_state,sys_id,assignment_group,short_description,description,subcategory,caller_id,sys_updated_on,sys_created_on,opened_at,number,state,cmdb_ci,impact,business_service,priority';
+      let tempUrl = snow_host + 'api/now/table/incident?sysparm_query=caller_id.sys_id=' + task.attributes.caller_id + '^assignment_group=d625dccec0a8016700a222a0f7900d06^stateIN1,2,3^ORDERBYnumber&sysparm_display_value=true&sysparm_limit=20&sysparm_fields=severity,assigned_to,incident_state,sys_id,assignment_group,short_description,description,subcategory,caller_id,sys_updated_on,sys_created_on,opened_at,number,state,cmdb_ci,impact,business_service,priority';
       if(url != tempUrl){
         this.getSnow(tempUrl);
       }      
       content = this.renderList();
     } 
     else if(task.attributes.channelSid){
-      let tempUrl2 = 'https://dev72990.service-now.com/api/now/table/sys_user?sysparm_query=u_slack_id=' + task.attributes.name;
+      let tempUrl2 = snow_host + 'api/now/table/sys_user?sysparm_query=u_slack_id=' + task.attributes.name;
       if(url != tempUrl2){
         this.getSnowLong(tempUrl2);
       }      

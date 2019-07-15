@@ -39,6 +39,7 @@ export default class GenericPlugin extends FlexPlugin {
     manager.updateConfig({colorTheme: { baseName: "MediumTheme", overrides: CustomThemeOverrides}});
     //CUSTOM LOGO
     flex.MainHeader.defaultProps.logoUrl = "https://s3.amazonaws.com/marmarti-testing/FLEX/LOGO/tata.svg";
+    //flex.MainHeader.defaultProps.logoUrl = 'https://www.sce.com/themes/custom/sce_responsive/images/home_logo.png';
     //CUSTOM STRING REPLACEMENTS
     manager.strings.TaskHeaderLine = "{{task.attributes.account_data.first_name}} {{task.attributes.account_data.last_name}}";
     manager.strings.TaskLineCallReserved = "SLA: {{task.attributes.account_data.service_level}}";
